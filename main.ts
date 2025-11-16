@@ -29,9 +29,9 @@ namespace mqlib{
         let arrMap = strMap.split('');
         let arrStr = str.split('');
         let arrIndex = [];
-        for (let i in arrStr) {
-            for (let im in arrMap) {
-                if (arrMap[im] == arrStr[i]) {
+        for (let i of arrStr) {
+            for (let im of arrMap) {
+                if (arrMap[parseInt(im)] == arrStr[parseInt(i)]) {
                     arrIndex.push(im);
                 }
             }
@@ -45,7 +45,7 @@ posY 行，1~4
 */
     function showWords2(arr: string[], posX = 1, posY = 1) {
         let line:number = 0;
-        for (let ci in arr) {
+        for (let ci of arr) {
             line = Math.floor(parseInt(ci) / 8);
             let iWordBankIndex = parseInt(arr[parseInt(ci)]);
             let cnt = arrWordBank[iWordBankIndex].length;
