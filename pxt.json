@@ -1,5 +1,5 @@
 {
-    "name": "pxt-mq-oled3",
+    "name": "pxt-mqlib-oled3",
     "version": "0.0.0",
     "description": "",
     "dependencies": {
