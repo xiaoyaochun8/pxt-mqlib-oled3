@@ -75,5 +75,6 @@ posY 行，1~4
            _screen1025[i + 1] = screen1024[i];
         }
         pins.i2cWriteBuffer(60, _screen1025);
+        //mqlib.drawPicBy1024Hex(screen1024);
     }
 }
