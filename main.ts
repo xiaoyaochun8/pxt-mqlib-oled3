@@ -22,10 +22,10 @@ namespace mqlib{
 /* 19 故 */[0x10, 0x10, 0x10, 0xff, 0x10, 0x10, 0x50, 0x20, 0xd8, 0x17, 0x10, 0x10, 0xf0, 0x10, 0x10, 0x00, 0x00, 0x7f, 0x21, 0x21, 0x21, 0x7f, 0x80, 0x40, 0x21, 0x16, 0x08, 0x16, 0x21, 0x40, 0x80, 0x00,],
 /* 20 乡 */[0x00, 0x00, 0x20, 0x30, 0x28, 0x24, 0xa3, 0x60, 0x20, 0x10, 0x0c, 0x00, 0xc0, 0x00, 0x00, 0x00, 0x80, 0x80, 0x80, 0x42, 0x42, 0x23, 0x22, 0x12, 0x0a, 0x06, 0x02, 0x01, 0x00, 0x00, 0x00, 0x00,]
     ];
-    let screen = pins.createBuffer(1024);
-    let _screen = pins.createBuffer(1025);
+    let screen1024 = pins.createBuffer(1024);
+    let _screen1025 = pins.createBuffer(1025);
     function getWordsIndex(str: string){
-        let strMap = '静夜思床前明月光';
+        let strMap = '静夜思床前明月光，疑似地上霜。举头望低故乡';
         let arrMap = strMap.split('');
         let arrStr = str.split('');
         let arrIndex = [];
@@ -61,19 +61,19 @@ posY 行，1~4
                 //行偏移，4行
                 index += (posY - 1) * 256;
                 //上半
-                screen[index] = arrWordBank[iWordBankIndex][i];
+                screen1024[index] = arrWordBank[iWordBankIndex][i];
                 //下半
-                screen[index + 128] = arrWordBank[iWordBankIndex][i + 16];
+                screen1024[index + 128] = arrWordBank[iWordBankIndex][i + 16];
             }
         }
     }
-    function TestShowWords(){
+    export function TestShowWords(){
         let arrIndex = getWordsIndex('明月光');
         showWords2(arrIndex);
-        _screen[0] = 0x40; //64
+        _screen1025[0] = 0x40; //64
         for (let i = 0; i < 1024; i++) {
-           _screen[i + 1] = screen[i];
+           _screen1025[i + 1] = screen1024[i];
         }
-        pins.i2cWriteBuffer(60, _screen);
+        pins.i2cWriteBuffer(60, _screen1025);
     }
 }
