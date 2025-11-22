@@ -77,14 +77,98 @@ posY 行，1~4
     }
     //% subcategory="oled"
     //% group='oled-汉字库'
-    //% block="已到站：客厅"
-    export function TestShowWords(){
+    //% block="已到站：卧室"
+    export function TestShowWords7() {
         // let arrIndex = getWordsIndex('明月光');
-        let arrIndex = ['0','1','2','3','4','5'];
+        let arrIndex = ['0', '1', '2', '3', '16', '17'];
+        showWords2(arrIndex);
+        _screen1025[0] = 0x40; //64
+        for (let i = 0; i < 1024; i++) {
+            _screen1025[i + 1] = screen1024[i];
+        }
+        pins.i2cWriteBuffer(60, _screen1025);
+        //mqlib.drawPicBy1024Hex(screen1024);
+    }
+    //% subcategory="oled"
+    //% group='oled-汉字库'
+    //% block="已到站：书房"
+    export function TestShowWords6() {
+        // let arrIndex = getWordsIndex('明月光');
+        let arrIndex = ['0', '1', '2', '3', '15', '9'];
+        showWords2(arrIndex);
+        _screen1025[0] = 0x40; //64
+        for (let i = 0; i < 1024; i++) {
+            _screen1025[i + 1] = screen1024[i];
+        }
+        pins.i2cWriteBuffer(60, _screen1025);
+        //mqlib.drawPicBy1024Hex(screen1024);
+    }
+    //% subcategory="oled"
+    //% group='oled-汉字库'
+    //% block="已到站：卫生间"
+    export function TestShowWords5() {
+        // let arrIndex = getWordsIndex('明月光');
+        let arrIndex = ['0', '1', '2', '3', '12', '13', '14'];
+        showWords2(arrIndex);
+        _screen1025[0] = 0x40; //64
+        for (let i = 0; i < 1024; i++) {
+            _screen1025[i + 1] = screen1024[i];
+        }
+        pins.i2cWriteBuffer(60, _screen1025);
+        //mqlib.drawPicBy1024Hex(screen1024);
+    }
+    //% subcategory="oled"
+    //% group='oled-汉字库'
+    //% block="已到站：餐桌"
+    export function TestShowWords4() {
+        // let arrIndex = getWordsIndex('明月光');
+        let arrIndex = ['0', '1', '2', '3', '10', '11'];
+        showWords2(arrIndex);
+        _screen1025[0] = 0x40; //64
+        for (let i = 0; i < 1024; i++) {
+            _screen1025[i + 1] = screen1024[i];
+        }
+        pins.i2cWriteBuffer(60, _screen1025);
+        //mqlib.drawPicBy1024Hex(screen1024);
+    }
+    //% subcategory="oled"
+    //% group='oled-汉字库'
+    //% block="已到站：厨房"
+    export function TestShowWords3() {
+        // let arrIndex = getWordsIndex('明月光');
+        let arrIndex = ['0', '1', '2', '3', '8', '9'];
+        showWords2(arrIndex);
+        _screen1025[0] = 0x40; //64
+        for (let i = 0; i < 1024; i++) {
+            _screen1025[i + 1] = screen1024[i];
+        }
+        pins.i2cWriteBuffer(60, _screen1025);
+        //mqlib.drawPicBy1024Hex(screen1024);
+    }
+    //% subcategory="oled"
+    //% group='oled-汉字库'
+    //% block="已到站：姥姥屋"
+    export function TestShowWords2(){
+        // let arrIndex = getWordsIndex('明月光');
+        let arrIndex = ['0','1','2','3','6','6','7'];
         showWords2(arrIndex);
         _screen1025[0] = 0x40; //64
         for (let i = 0; i < 1024; i++) {
            _screen1025[i + 1] = screen1024[i];
+        }
+        pins.i2cWriteBuffer(60, _screen1025);
+        //mqlib.drawPicBy1024Hex(screen1024);
+    }
+    //% subcategory="oled"
+    //% group='oled-汉字库'
+    //% block="已到站：客厅"
+    export function TestShowWords() {
+        // let arrIndex = getWordsIndex('明月光');
+        let arrIndex = ['0', '1', '2', '3', '4', '5'];
+        showWords2(arrIndex);
+        _screen1025[0] = 0x40; //64
+        for (let i = 0; i < 1024; i++) {
+            _screen1025[i + 1] = screen1024[i];
         }
         pins.i2cWriteBuffer(60, _screen1025);
         //mqlib.drawPicBy1024Hex(screen1024);
