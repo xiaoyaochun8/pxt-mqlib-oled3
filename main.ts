@@ -126,6 +126,7 @@ posY 行，1~4
     }
     function doShowWords(arrIndex:string[]) {
         showWords2(arrIndex);
+        _screen1025.fill(0);
         _screen1025[0] = 0x40; //64
         for (let i = 0; i < 1024; i++) {
             _screen1025[i + 1] = screen1024[i];
