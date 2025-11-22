@@ -124,10 +124,10 @@ posY 行，1~4
         let arrIndex = ['0', '1', '2', '3', '4', '5'];
         doShowWords(arrIndex);
     }
-    function doShowWords(arrIndex:string[]) {
+    function doShowWords(arrIndex: string[]) {
+        screen1024.fill(0);
         showWords2(arrIndex);
         _screen1025.fill(0);
-        screen1024.fill(0);
         _screen1025[0] = 0x40; //64
         for (let i = 0; i < 1024; i++) {
             _screen1025[i + 1] = screen1024[i];
