@@ -50,12 +50,12 @@ arr 字符串
 posX 列，1~128
 posY 行，1~4
 */
-    function showWords2(arr: string[], posX = 1, posY = 1):Buffer {
+    function showWords2(arr: number[], posX = 1, posY = 1):Buffer {
         let screen1024 = pins.createBuffer(1024);
         let line:number = 0;
         for (let ci of arr) {
-            line = Math.floor(parseInt(ci) / 8);
-            let iWordBankIndex = parseInt(arr[parseInt(ci)]);
+            line = Math.floor(ci / 8);
+            let iWordBankIndex = arr[ci];
             // let cnt = arrWordBank[iWordBankIndex].length;
             let index = 0;
             for (let i = 0; i < 16; i++) {
@@ -63,7 +63,7 @@ posY 行，1~4
                 //字符换行，8字符
                 index += 128 * line;
                 //字模偏移，16x16
-                index += parseInt(ci) * 16;
+                index += ci * 16;
                 //列偏移，128列
                 index += (posX - 1) % 128;
                 //行偏移，4行
@@ -80,52 +80,52 @@ posY 行，1~4
     //% group='oled-汉字库'
     //% block="已到站：卧室"
     export function TestShowWords7() {
-        let arrIndex = ['0', '1', '2', '3', '16', '17'];
+        let arrIndex = [0, 1, 2, 3, 16, 17];
         doShowWords(arrIndex);
     }
     //% subcategory="oled"
     //% group='oled-汉字库'
     //% block="已到站：书房"
     export function TestShowWords6() {
-        let arrIndex = ['0', '1', '2', '3', '15', '9'];
+        let arrIndex = [0, 1, 2, 3, 15, 9];
         doShowWords(arrIndex);
     }
     //% subcategory="oled"
     //% group='oled-汉字库'
     //% block="已到站：卫生间"
     export function TestShowWords5() {
-        let arrIndex = ['0', '1', '2', '3', '12', '13', '14'];
+        let arrIndex = [0, 1, 2, 3, 12, 13, 14];
         doShowWords(arrIndex);
     }
     //% subcategory="oled"
     //% group='oled-汉字库'
     //% block="已到站：餐桌"
     export function TestShowWords4() {
-        let arrIndex = ['0', '1', '2', '3', '10', '11'];
+        let arrIndex = [0, 1, 2, 3, 10, 11];
         doShowWords(arrIndex);
     }
     //% subcategory="oled"
     //% group='oled-汉字库'
     //% block="已到站：厨房"
     export function TestShowWords3() {
-        let arrIndex = ['0', '1', '2', '3', '8', '9'];
+        let arrIndex = [0, 1, 2, 3, 8, 9];
         doShowWords(arrIndex);
     }
     //% subcategory="oled"
     //% group='oled-汉字库'
     //% block="已到站：姥姥屋"
     export function TestShowWords2(){
-        let arrIndex = ['0', '1', '2', '3', '6', '7'];
+        let arrIndex = [0, 1, 2, 3, 6, 7];
         doShowWords(arrIndex);
     }
     //% subcategory="oled"
     //% group='oled-汉字库'
     //% block="已到站：客厅"
     export function TestShowWords() {
-        let arrIndex = ['0', '1', '2', '3', '4', '5'];
+        let arrIndex = [0, 1, 2, 3, 4, 5];
         doShowWords(arrIndex);
     }
-    function doShowWords(arrIndex: string[]) {
+    function doShowWords(arrIndex: number[]) {
         let screen1024 = showWords2(arrIndex);
         _screen1025.fill(0);
         _screen1025[0] = 0x40; //64
