@@ -23,7 +23,6 @@ namespace mqlib{
 /* 16 卧 */[0x00, 0xfe, 0x22, 0x22, 0x3e, 0x22, 0x22, 0xe2, 0x02, 0x00, 0xff, 0x20, 0x40, 0x80, 0x00, 0x00, 0x00, 0x3f, 0x22, 0x22, 0x3e, 0x22, 0x22, 0x23, 0x20, 0x00, 0xff, 0x00, 0x00, 0x00, 0x03, 0x00,],
 /* 17 室 */[0x10, 0x0c, 0x24, 0x24, 0xa4, 0x64, 0x25, 0x26, 0x24, 0x24, 0xa4, 0x24, 0x24, 0x14, 0x0c, 0x00, 0x40, 0x40, 0x48, 0x49, 0x49, 0x49, 0x49, 0x7f, 0x49, 0x49, 0x49, 0x4b, 0x48, 0x40, 0x40, 0x00,]
     ];
-    let screen1024 = pins.createBuffer(1024);
     let _screen1025 = pins.createBuffer(1025);
     function getWordsIndex(str: string){
         let strMap = '静夜思床前明月光，疑似地上霜。举头望低故乡';
@@ -51,7 +50,8 @@ arr 字符串
 posX 列，1~128
 posY 行，1~4
 */
-    function showWords2(arr: string[], posX = 1, posY = 1) {
+    function showWords2(arr: string[], posX = 1, posY = 1):any {
+        let screen1024 = pins.createBuffer(1024);
         let line:number = 0;
         for (let ci of arr) {
             line = Math.floor(parseInt(ci) / 8);
@@ -74,6 +74,7 @@ posY 行，1~4
                 screen1024[index + 128] = arrWordBank[iWordBankIndex][i + 16];
             }
         }
+        return screen1024;
     }
     //% subcategory="oled"
     //% group='oled-汉字库'
@@ -125,8 +126,7 @@ posY 行，1~4
         doShowWords(arrIndex);
     }
     function doShowWords(arrIndex: string[]) {
-        screen1024.fill(0);
-        showWords2(arrIndex);
+        let screen1024 = showWords2(arrIndex);
         _screen1025.fill(0);
         _screen1025[0] = 0x40; //64
         for (let i = 0; i < 1024; i++) {
