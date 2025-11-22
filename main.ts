@@ -32,14 +32,21 @@ namespace mqlib{
         let strMap = '静夜思床前明月光，疑似地上霜。举头望低故乡';
         let arrMap = strMap.split('');
         let arrStr = str.split('');
-        let arrIndex = [];
-        for (let i of arrStr) {
-            for (let im of arrMap) {
-                if (arrMap[parseInt(im)] == arrStr[parseInt(i)]) {
-                    arrIndex.push(im);
-                }
-            }
-        }
+        let arrIndex:string[] = [];
+        // for (let i of arrStr) {
+        //     for (let im of arrMap) {
+        //         if (arrMap[parseInt(im)] == arrStr[parseInt(i)]) {
+        //             arrIndex.push(im);
+        //         }
+        //     }
+        // }
+        // arrStr.forEach((val:string, idx:number, arrStr:Array) => {
+        //     arrMap.forEach((val2, idx2, arr2) => {
+        //         if (val2 == val) {
+        //             arrIndex.push(idx2);
+        //         }
+        //     });
+        // });
         return arrIndex;
     }
     /*
@@ -75,7 +82,8 @@ posY 行，1~4
     //% group='oled-汉字库'
     //% block="oled显示明月光"
     export function TestShowWords(){
-        let arrIndex = getWordsIndex('明月光');
+        // let arrIndex = getWordsIndex('明月光');
+        let arrIndex = ['0','1','2'];
         showWords2(arrIndex);
         _screen1025[0] = 0x40; //64
         for (let i = 0; i < 1024; i++) {
