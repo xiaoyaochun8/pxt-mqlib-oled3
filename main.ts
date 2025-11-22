@@ -50,7 +50,7 @@ arr 字符串
 posX 列，1~128
 posY 行，1~4
 */
-    function showWords2(arr: string[], posX = 1, posY = 1):any {
+    function showWords2(arr: string[], posX = 1, posY = 1):Buffer {
         let screen1024 = pins.createBuffer(1024);
         let line:number = 0;
         for (let ci of arr) {
