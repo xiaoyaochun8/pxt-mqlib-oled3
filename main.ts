@@ -115,7 +115,7 @@ posY 行，1~4
     //% group='oled-汉字库'
     //% block="已到站：姥姥屋"
     export function TestShowWords2(){
-        let arrIndex = ['0', '1', '2', '3', '6', '6', '7'];
+        let arrIndex = ['0', '1', '2', '3', '6', '7'];
         doShowWords(arrIndex);
     }
     //% subcategory="oled"
