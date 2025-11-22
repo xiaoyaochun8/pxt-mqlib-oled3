@@ -56,7 +56,7 @@ posY 行，1~4
         for (let ci of arr) {
             line = Math.floor(parseInt(ci) / 8);
             let iWordBankIndex = parseInt(arr[parseInt(ci)]);
-            let cnt = arrWordBank[iWordBankIndex].length;
+            // let cnt = arrWordBank[iWordBankIndex].length;
             let index = 0;
             for (let i = 0; i < 16; i++) {
                 index = i;
