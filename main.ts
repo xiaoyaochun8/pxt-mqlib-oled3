@@ -45,7 +45,11 @@ posY 行，1~4
         _screen1025.fill(0);
         _screen1025[0] = 0x40; //64
         for (let i = 0; i < 1024; i++) {
-            _screen1025[i + 1] = screen1024[i];
+            if(screen1024[i]){
+                _screen1025[i + 1] = screen1024[i];
+            }else{
+                _screen1025[i + 1] = 0;
+            }
         }
         pins.i2cWriteBuffer(60, _screen1025);
         //mqlib.drawPicBy1024Hex(screen1024);
