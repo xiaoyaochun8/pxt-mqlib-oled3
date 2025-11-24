@@ -17,7 +17,7 @@ posY 行，1~4
     function showWords2(arr: number[], posX = 1, posY = 1):Buffer {
         let screen1024 = pins.createBuffer(1024);
         let line:number = 0;
-        for (let ci of arr) {
+        for (let ci=0; ci<arr.length; ci++) {
             line = Math.floor(ci / 8);
             let iWordBankIndex = arr[ci];
             // let cnt = arrWordBank[iWordBankIndex].length;
