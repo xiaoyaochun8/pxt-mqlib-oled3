@@ -58,21 +58,21 @@ posY 行，1~4
     //% group='oled-汉字库'
     //% block="充电中"
     export function TestShowWords() {
-        let arrIndex = [0, 1, 2];
+        let arrIndex:number[] = [0, 1, 2];
         doShowWords(arrIndex);
     }
     //% subcategory="oled"
     //% group='oled-汉字库'
     //% block="充电中充电中"
     export function TestShowWords2() {
-        let arrIndex = [0, 1, 2, 0, 1, 2];
+        let arrIndex:number[] = [0, 1, 2, 0, 1, 2];
         doShowWords(arrIndex);
     }
     //% subcategory="oled"
     //% group='oled-汉字库'
     //% block="充中"
     export function TestShowWords3() {
-        let arrIndex = [0, 2];
+        let arrIndex:number[] = [0, 2];
         doShowWords(arrIndex);
     }
 }
