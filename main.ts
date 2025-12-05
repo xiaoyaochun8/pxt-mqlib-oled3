@@ -40,8 +40,8 @@ posY 行，1~4
         }
         return screen1024;
     }
-    function doShowWords(arrIndex: number[]) {
-        let screen1024 = showWords2(arrIndex);
+    function doShowWords(arrIndex: number[], posX = 1, posY = 1) {
+        let screen1024 = showWords2(arrIndex, posX, posY);
         _screen1025.fill(0);
         _screen1025[0] = 0x40; //64
         for (let i = 0; i < 1024; i++) {
@@ -56,23 +56,9 @@ posY 行，1~4
     }
     //% subcategory="oled"
     //% group='oled-汉字库'
-    //% block="充电中"
-    export function TestShowWords() {
+    //% block="充电中 x $x y $y"
+    export function TestShowWords(posX = 1, posY = 1) {
         let arrIndex:number[] = [0, 1, 2];
-        doShowWords(arrIndex);
-    }
-    //% subcategory="oled"
-    //% group='oled-汉字库'
-    //% block="充电中充电中"
-    export function TestShowWords2() {
-        let arrIndex:number[] = [0, 1, 2, 0, 1, 2];
-        doShowWords(arrIndex);
-    }
-    //% subcategory="oled"
-    //% group='oled-汉字库'
-    //% block="充中"
-    export function TestShowWords3() {
-        let arrIndex:number[] = [0, 2];
-        doShowWords(arrIndex);
+        doShowWords(arrIndex, posX, posY);
     }
 }
