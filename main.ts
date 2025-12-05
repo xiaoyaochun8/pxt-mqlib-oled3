@@ -48,7 +48,7 @@ posY 行，1~4
             if(screen1024[i]){
                 _screen1025[i + 1] = screen1024[i];
             }else{
-                _screen1025[i + 1] = 0;
+                //_screen1025[i + 1] = 0;
             }
         }
         pins.i2cWriteBuffer(60, _screen1025);
