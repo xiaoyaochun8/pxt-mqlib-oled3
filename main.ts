@@ -72,7 +72,7 @@ posY 行，1~4
     }
     //% subcategory="oled"
     //% group='oled-汉字库'
-    //% block="充电中 第几列 $posX 第几行 $posY"
+    //% block="在第几列 $posX 第几行 $posY 显示：充电中"
     export function TestShowWords(posX = 1, posY = 1) {
         let arrIndex:number[] = [0, 1, 2];
         doShowWords(arrIndex, posX, posY);
