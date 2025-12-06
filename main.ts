@@ -48,7 +48,7 @@ posY 行，1~4
         return screen1024;
     }
     function doShowWords(arrIndex: number[], posX = 1, posY = 1) {
-        let screen1024 = showWords2(arrIndex, posX, posY);
+        let screen1024:Buffer = showWords2(arrIndex, posX, posY);
         _screen1025.fill(0);
         _screen1025[0] = 0x40; //64
         for (let i = 0; i < 1024; i++) {
@@ -63,7 +63,7 @@ posY 行，1~4
     }
     //% subcategory="oled"
     //% group='oled-汉字库'
-    //% block="充电中 x $x y $y"
+    //% block="充电中 第几列 $posX 第几行 $posY"
     export function TestShowWords(posX = 1, posY = 1) {
         let arrIndex:number[] = [0, 1, 2];
         doShowWords(arrIndex, posX, posY);
