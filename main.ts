@@ -47,7 +47,7 @@ posY 行，1~4
         }
         return screen1024;
     }
-    function doShowWords(arrIndex: number[], posX = 1, posY = 1) {
+    function doShowWords(arrIndex: number[]=[], posX = 1, posY = 1) {
         let screen1024:Buffer = showWords2(arrIndex, posX, posY);
         _screen1025.fill(0);
         _screen1025[0] = 0x40; //64
