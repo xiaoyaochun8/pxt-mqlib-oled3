@@ -59,7 +59,7 @@ posY 行，1~4
             }
         }
         pins.i2cWriteBuffer(60, _screen1025);
-        //mqlib.drawPicBy1024Hex(screen1024);
+        //mqlib.drawByArr1024(screen1024);
     }
     //% subcategory="oled"
     //% group='oled-汉字库'
