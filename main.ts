@@ -9,8 +9,8 @@ namespace mqlib{
 // /* 1 电 */ [ 0x00, 0x00, 0xf8, 0x88, 0x88, 0x88, 0x88, 0xff, 0x88, 0x88, 0x88, 0x88, 0xf8, 0x00, 0x00, 0x00, 0x00, 0x00, 0x1f, 0x08, 0x08, 0x08, 0x08, 0x7f, 0x88, 0x88, 0x88, 0x88, 0x9f, 0x80, 0xf0, 0x00, ],
 // /* 2 中 */ [ 0x00, 0x00, 0xf0, 0x10, 0x10, 0x10, 0x10, 0xff, 0x10, 0x10, 0x10, 0x10, 0xf0, 0x00, 0x00, 0x00, 0x00, 0x00, 0x0f, 0x04, 0x04, 0x04, 0x04, 0xff, 0x04, 0x04, 0x04, 0x04, 0x0f, 0x00, 0x00, 0x00, ]
 //     ];
-    // let _screen1025 = pins.createBuffer(1025);
     let screen1024 = pins.createBuffer(1024);
+    let _screen1025 = pins.createBuffer(1025);
     function getWordBank():number[][]{
         let arrWordBank: number[][] = []
         arrWordBank = [
@@ -27,10 +27,10 @@ namespace mqlib{
      */
     //% subcategory="oled"
     //% group='oled-汉字库'
-    //% block="获取字模数据 $arr $posX $posY"
+    //% block="获取字模数据1024 $arr $posX $posY"
     //% posX.min=1 posX.max=128 posX.defl=1
     //% posY.min=1 posY.max=4 posY.defl=1
-    function showWords(arr: number[], posX = 1, posY = 1):Buffer {
+    function getFontData1024(arr: number[], posX = 1, posY = 1):Buffer {
         let arrWordBank: number[][] = getWordBank();
         //let screen1024 = pins.createBuffer(1024);
         screen1024.fill(0);
@@ -58,10 +58,20 @@ namespace mqlib{
         }
         return screen1024;
     }
-    function doShowWords(arrIndex: number[]=[], posX = 1, posY = 1) {
-        //let screen1024:Buffer = showWords2(arrIndex, posX, posY);
-        screen1024 = showWords(arrIndex, posX, posY);
-        let _screen1025 = pins.createBuffer(1025);
+    /*
+     * arr 字符串
+     * posX 列，1~128
+     * posY 行，1~4
+     */
+    //% subcategory="oled"
+    //% group='oled-汉字库'
+    //% block="获取字模数据1025 $arr $posX $posY"
+    //% posX.min=1 posX.max=128 posX.defl=1
+    //% posY.min=1 posY.max=4 posY.defl=1
+    function getFontData1025(arr: number[]=[], posX = 1, posY = 1):Buffer {
+        //let screen1024:Buffer = getFontData1024(arr, posX, posY);
+        //screen1024 = getFontData1024(arr, posX, posY);
+        //let _screen1025 = pins.createBuffer(1025);
         _screen1025.fill(0);
         _screen1025[0] = 0x40; //64
         for (let i = 0; i < 1024; i++) {
@@ -71,7 +81,7 @@ namespace mqlib{
                 //_screen1025[i + 1] = 0;
             }
         }
-        pins.i2cWriteBuffer(60, _screen1025);
+        return _screen1025;
     }
     //% subcategory="oled"
     //% group='oled-汉字库'
@@ -79,7 +89,9 @@ namespace mqlib{
     //% posX.min=1 posX.max=128 posX.defl=1
     //% posY.min=1 posY.max=4 posY.defl=1
     export function TestShowWords(posX:number = 1, posY:number = 1) {
-        let arrIndex:number[] = [0, 1, 2];
-        doShowWords(arrIndex, posX, posY);
+        let arr:number[] = [0, 1, 2];
+        getFontData1024(arr, posX, posY);
+        getFontData1025(arr, posX, posY);
+        pins.i2cWriteBuffer(60, _screen1025);
     }
 }
