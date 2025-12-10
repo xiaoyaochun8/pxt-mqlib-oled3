@@ -10,14 +10,7 @@ namespace mqlib{
 // /* 2 中 */ [ 0x00, 0x00, 0xf0, 0x10, 0x10, 0x10, 0x10, 0xff, 0x10, 0x10, 0x10, 0x10, 0xf0, 0x00, 0x00, 0x00, 0x00, 0x00, 0x0f, 0x04, 0x04, 0x04, 0x04, 0xff, 0x04, 0x04, 0x04, 0x04, 0x0f, 0x00, 0x00, 0x00, ]
 //     ];
     // let _screen1025 = pins.createBuffer(1025);
-    function doClear(){
-        let _screen1025 = pins.createBuffer(1025);
-        _screen1025[0] = 0x40; //64
-        for (let i = 0; i < 1024; i++) {
-            _screen1025[i + 1] = 0;
-        }
-        pins.i2cWriteBuffer(60, _screen1025);
-    }
+    let screen1024 = pins.createBuffer(1024);
     function getWordBank():number[][]{
         let arrWordBank: number[][] = []
         arrWordBank = [
@@ -28,13 +21,19 @@ namespace mqlib{
         return arrWordBank;
     }
     /*
-arr 字符串
-posX 列，1~128
-posY 行，1~4
-*/
-    function showWords2(arr: number[], posX = 1, posY = 1):Buffer {
+     * arr 字符串
+     * posX 列，1~128
+     * posY 行，1~4
+     */
+    //% subcategory="oled"
+    //% group='oled-汉字库'
+    //% block="获取字模数据 $arr $posX $posY"
+    //% posX.min=1 posX.max=128 posX.defl=1
+    //% posY.min=1 posY.max=4 posY.defl=1
+    function showWords(arr: number[], posX = 1, posY = 1):Buffer {
         let arrWordBank: number[][] = getWordBank();
-        let screen1024 = pins.createBuffer(1024);
+        //let screen1024 = pins.createBuffer(1024);
+        screen1024.fill(0);
         let line:number = 0;
         for (let ci=0; ci<arr.length; ci++) {
             line = Math.floor(ci / 8);
@@ -60,7 +59,8 @@ posY 行，1~4
         return screen1024;
     }
     function doShowWords(arrIndex: number[]=[], posX = 1, posY = 1) {
-        let screen1024:Buffer = showWords2(arrIndex, posX, posY);
+        //let screen1024:Buffer = showWords2(arrIndex, posX, posY);
+        screen1024 = showWords(arrIndex, posX, posY);
         let _screen1025 = pins.createBuffer(1025);
         _screen1025.fill(0);
         _screen1025[0] = 0x40; //64
@@ -72,7 +72,6 @@ posY 行，1~4
             }
         }
         pins.i2cWriteBuffer(60, _screen1025);
-        //mqlib.drawByArr1024(screen1024);
     }
     //% subcategory="oled"
     //% group='oled-汉字库'
