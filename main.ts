@@ -69,8 +69,8 @@ namespace mqlib{
     //% posX.min=1 posX.max=128 posX.defl=1
     //% posY.min=1 posY.max=4 posY.defl=1
     function getFontData1025(arr: number[]=[], posX = 1, posY = 1):Buffer {
-        //let screen1024:Buffer = getFontData1024(arr, posX, posY);
-        //screen1024 = getFontData1024(arr, posX, posY);
+        let screen1024:Buffer = getFontData1024(arr, posX, posY);
+        screen1024 = getFontData1024(arr, posX, posY);
         //let _screen1025 = pins.createBuffer(1025);
         _screen1025.fill(0);
         _screen1025[0] = 0x40; //64
@@ -85,12 +85,11 @@ namespace mqlib{
     }
     //% subcategory="oled"
     //% group='oled-汉字库'
-    //% block="在第几行 $posY 第几列 $posX 显示：充电中"
+    //% block="在第几行 $posY 第几列 $posX 显示【充电中】"
     //% posX.min=1 posX.max=128 posX.defl=1
     //% posY.min=1 posY.max=4 posY.defl=1
     export function TestShowWords(posX:number = 1, posY:number = 1) {
         let arr:number[] = [0, 1, 2];
-        getFontData1024(arr, posX, posY);
         getFontData1025(arr, posX, posY);
         pins.i2cWriteBuffer(60, _screen1025);
     }
