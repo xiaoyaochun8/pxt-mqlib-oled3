@@ -5,8 +5,7 @@
     "dependencies": {
         "core": "*",
         "radio": "*",
-        "microphone": "*",
-        "pxt-mqlib-oled": "github:xiaoyaochun8/pxt-mqlib-oled#b60ca02ac6c80c733452cb1bec0e215f0b94c213"
+        "microphone": "*"
     },
     "files": [
         "README.md",
