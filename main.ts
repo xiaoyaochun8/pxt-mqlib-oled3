@@ -11,7 +11,7 @@ namespace mqlib{
 //     ];
     let _screen1024 = pins.createBuffer(1024);
     let _screen1025 = pins.createBuffer(1025);
-    function getWordBank():number[][]{
+    function oledGetWordBank():number[][]{
         let arrWordBank: number[][] = []
         arrWordBank = [
 /* 0 充 */[0x04, 0x04, 0x84, 0xc4, 0xa4, 0x9c, 0x85, 0x86, 0x84, 0x84, 0xa4, 0xc4, 0x84, 0x04, 0x04, 0x00, 0x00, 0x80, 0x80, 0x40, 0x30, 0x0f, 0x00, 0x00, 0x00, 0x7f, 0x80, 0x80, 0x81, 0xf0, 0x00, 0x00,],
@@ -30,8 +30,8 @@ namespace mqlib{
     //% block="获取字模数据1024 $arr $posX $posY"
     //% posX.min=1 posX.max=128 posX.defl=1
     //% posY.min=1 posY.max=4 posY.defl=1
-    function getFontData1024(arr: number[], posX = 1, posY = 1):Buffer {
-        let arrWordBank: number[][] = getWordBank();
+    function oledGetFontData1024(arr: number[], posX = 1, posY = 1):Buffer {
+        let arrWordBank: number[][] = oledGetWordBank();
         //let _screen1024 = pins.createBuffer(1024);
         _screen1024.fill(0);
         let line:number = 0;
@@ -68,9 +68,9 @@ namespace mqlib{
     //% block="获取字模数据1025 $arr $posX $posY"
     //% posX.min=1 posX.max=128 posX.defl=1
     //% posY.min=1 posY.max=4 posY.defl=1
-    function getFontData1025(arr: number[]=[], posX = 1, posY = 1):Buffer {
-        //let _screen1024:Buffer = getFontData1024(arr, posX, posY);
-        _screen1024 = getFontData1024(arr, posX, posY);
+    function oledGetFontData1025(arr: number[]=[], posX = 1, posY = 1):Buffer {
+        //let _screen1024:Buffer = oledGetFontData1024(arr, posX, posY);
+        _screen1024 = oledGetFontData1024(arr, posX, posY);
         //let _screen1025 = pins.createBuffer(1025);
         _screen1025.fill(0);
         _screen1025[0] = 0x40; //64
@@ -88,9 +88,9 @@ namespace mqlib{
     //% block="在第几行 $posY 第几列 $posX 显示【充电中】"
     //% posX.min=1 posX.max=128 posX.defl=1
     //% posY.min=1 posY.max=4 posY.defl=1
-    export function TestShowWords(posX:number = 1, posY:number = 1) {
+    export function oledTestShowWords(posX:number = 1, posY:number = 1) {
         let arr:number[] = [0, 1, 2];
-        _screen1025 = getFontData1025(arr, posX, posY);
+        _screen1025 = oledGetFontData1025(arr, posX, posY);
         pins.i2cWriteBuffer(60, _screen1025);
     }
 }
