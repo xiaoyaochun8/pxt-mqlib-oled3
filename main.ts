@@ -1,6 +1,8 @@
 /**
  * mqOled blocks
+ * https://led.baud-dance.com/
  */
+
 //% groups=['oled-汉字库']
 namespace mqlib{
 //     let arrWordBank:number[][] = []
