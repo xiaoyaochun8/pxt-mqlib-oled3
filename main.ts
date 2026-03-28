@@ -1,6 +1,6 @@
 /**
  * mqOled blocks
- * https://led.baud-dance.com/
+ * 取模工具 https://led.baud-dance.com/
  */
 
 //% groups=['oled-汉字库']
