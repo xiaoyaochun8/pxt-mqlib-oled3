@@ -1,6 +1,8 @@
 /**
  * mqOled blocks
+ * 取模工具 https://led.baud-dance.com/
  */
+
 //% groups=['oled-汉字库']
 namespace mqlib{
 //     let arrWordBank:number[][] = []
