@@ -27,7 +27,7 @@ namespace mqlib{
      */
     //% subcategory="oled"
     //% group='oled-汉字库'
-    //% block="获取字模数据1024 $arr $posX $posY"
+    //% block="oled获取字模数据1024 $arr $posX $posY"
     //% posX.min=1 posX.max=128 posX.defl=1
     //% posY.min=1 posY.max=4 posY.defl=1
     function oledGetFontData1024(arr: number[], posX = 1, posY = 1):Buffer {
@@ -65,7 +65,7 @@ namespace mqlib{
      */
     //% subcategory="oled"
     //% group='oled-汉字库'
-    //% block="获取字模数据1025 $arr $posX $posY"
+    //% block="oled获取字模数据1025 $arr $posX $posY"
     //% posX.min=1 posX.max=128 posX.defl=1
     //% posY.min=1 posY.max=4 posY.defl=1
     function oledGetFontData1025(arr: number[]=[], posX = 1, posY = 1):Buffer {
@@ -85,7 +85,7 @@ namespace mqlib{
     }
     //% subcategory="oled"
     //% group='oled-汉字库'
-    //% block="在第几行 $posY 第几列 $posX 显示【充电中】"
+    //% block="oled显示【充电中】在第$posY行 第$posX列"
     //% posX.min=1 posX.max=128 posX.defl=1
     //% posY.min=1 posY.max=4 posY.defl=1
     export function oledTestShowWords(posX:number = 1, posY:number = 1) {
